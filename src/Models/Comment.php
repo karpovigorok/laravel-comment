@@ -29,6 +29,8 @@ class Comment extends Model
         'commented_type',
         'anonymous_username',
         'parent_id',
+        'created_at',
+        'updated_at'
     ];
 
     protected $casts = [
