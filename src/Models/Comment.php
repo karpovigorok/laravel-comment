@@ -26,7 +26,9 @@ class Comment extends Model
         'rate',
         'approved',
         'commented_id',
-        'commented_type'
+        'commented_type',
+        'anonymous_username',
+        'parent_id',
     ];
 
     protected $casts = [
@@ -58,5 +60,8 @@ class Comment extends Model
         $this->save();
 
         return $this;
+    }
+    public function replies() {
+        return $this->hasMany('Actuallymab\LaravelComment\Models\Comment', 'parent_id', 'id');
     }
 }

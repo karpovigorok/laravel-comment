@@ -19,6 +19,9 @@ class CreateCommentsTable extends Migration
             $table->longText('comment');
             $table->boolean('approved')->default(true);
             $table->double('rate', 15, 8)->nullable();
+            $table->string('anonymous_username')->nullable();
+            $table->integer('parent_id')->unsigned()->nullable();
+            $table->foreign('parent_id')->references('id')->on('comments');
             $table->timestamps();
         });
     }
